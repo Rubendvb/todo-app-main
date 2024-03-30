@@ -1,12 +1,36 @@
-import { ITask } from '../../@types/tasks'
-import './Card.css'
+import classNames from 'classnames'
 
-type CardProps = {
+import { ITask } from '../../@types/tasks'
+
+import './Card.css'
+import { useState } from 'react'
+
+const optionsFilters = [
+  {
+    name: 'All',
+    value: 'all',
+  },
+  {
+    name: 'Active',
+    value: 'active',
+  },
+  {
+    name: 'Completed',
+    value: 'completed',
+  },
+]
+
+export type Filter = '' | 'all' | 'active' | 'completed'
+
+interface CardProps {
   itemQuantities: number
   tasks: ITask[]
+  setFilter: React.Dispatch<React.SetStateAction<Filter>>
+  filter: Filter
 }
 
 export default function Card({ itemQuantities, tasks }: CardProps) {
+  const [selected, setSelected] = useState('all')
   return (
     <main className="card">
       <ul>
@@ -28,9 +52,20 @@ export default function Card({ itemQuantities, tasks }: CardProps) {
       <div className="card__footer">
         <span className="card__footer__span">{itemQuantities} items left</span>
         <div>
-          <span className="card__footer__span selected">All</span>
-          <span className="card__footer__span">Active</span>
-          <span className="card__footer__span">Completed</span>
+          {optionsFilters.map((option) => (
+            <span
+              key={option.value}
+              className={classNames({
+                card__footer__span: true,
+                selected: selected === option.value,
+              })}
+              onClick={() => {
+                setSelected(option.value)
+              }}
+            >
+              {option.name}
+            </span>
+          ))}
         </div>
         <span className="card__footer__span clear">Clear Completed</span>
       </div>
