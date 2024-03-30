@@ -1,5 +1,5 @@
 body {
-  background-image: url('../assets/images/bg-desktop-light.jpg');
+  background-image: var(--img-bg);
   background-repeat: no-repeat;
   background-size: contain;
   background-color: var(--body-bg);
