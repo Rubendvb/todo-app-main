@@ -1,11 +1,13 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
 import './Input.css'
-
-interface InputProps {
-  setTasks: React.Dispatch<React.SetStateAction<string[]>>
-}
+import { InputProps } from '../../@types/input'
 
 export default function Input({ setTasks }: InputProps) {
+  const initialTask = {
+    status: 'created',
+    createdAd: new Date().toISOString(),
+  }
+
   const [inputValue, setInputValue] = useState('')
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +17,12 @@ export default function Input({ setTasks }: InputProps) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    setTasks((oldTasks) => [...oldTasks, inputValue])
+    const newTasks = {
+      ...initialTask,
+      description: inputValue,
+    }
+
+    setTasks((oldTasks) => [...oldTasks, newTasks])
 
     setInputValue('')
   }

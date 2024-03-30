@@ -1,8 +1,9 @@
+import { ITask } from '../../@types/tasks'
 import './Card.css'
 
 type CardProps = {
   itemQuantities: number
-  tasks: string[]
+  tasks: ITask[]
 }
 
 export default function Card({ itemQuantities, tasks }: CardProps) {
@@ -13,8 +14,12 @@ export default function Card({ itemQuantities, tasks }: CardProps) {
           tasks.map((task, index) => (
             <li key={index}>
               <label>
-                <input type="checkbox" name="checkbox" id={`${index}`} />
-                <span>{task}</span>
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  id={`${task.createdAd}`}
+                />
+                <span>{task.description}</span>
               </label>
             </li>
           ))}

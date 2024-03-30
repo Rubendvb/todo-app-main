@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import Card from './components/Card/Card'
 import Header from './components/Header/Header'
 import Input from './components/Input/Input'
+import { ITask } from './@types/tasks'
 
 import './styles/App.css'
 
 function App() {
-  const [tasks, setTasks] = useState<string[]>([])
+  const [tasks, setTasks] = useState<ITask[]>([])
   const [itemQuantities, setItemQuantities] = useState(0)
 
   useEffect(() => {
