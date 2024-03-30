@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Card from './components/Card/Card'
 import Header from './components/Header/Header'
 import Input from './components/Input/Input'
@@ -5,13 +6,20 @@ import Input from './components/Input/Input'
 import './styles/App.css'
 
 function App() {
+  const [tasks, setTasks] = useState<string[]>([])
+  const [itemQuantities, setItemQuantities] = useState(0)
+
+  useEffect(() => {
+    setItemQuantities(tasks.length)
+  }, [tasks])
+
   return (
     <>
       <Header />
 
-      <Input />
+      <Input setTasks={setTasks} />
 
-      <Card />
+      <Card itemQuantities={itemQuantities} tasks={tasks} />
 
       <footer className="footer">
         <span>Drag and drop to reorder list</span>

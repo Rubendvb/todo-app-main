@@ -1,19 +1,27 @@
 import './Card.css'
 
-export default function Card() {
+type CardProps = {
+  itemQuantities: number
+  tasks: string[]
+}
+
+export default function Card({ itemQuantities, tasks }: CardProps) {
   return (
     <main className="card">
       <ul>
-        <li>
-          <label>
-            <input type="checkbox" name="checkbox" id="todo2" />
-            <span>Enviar convites para a reunião de equipe</span>
-          </label>
-        </li>
+        {tasks &&
+          tasks.map((task, index) => (
+            <li key={index}>
+              <label>
+                <input type="checkbox" name="checkbox" id={`${index}`} />
+                <span>{task}</span>
+              </label>
+            </li>
+          ))}
       </ul>
 
       <div className="card__footer">
-        <span className="card__footer__span">5 items left</span>
+        <span className="card__footer__span">{itemQuantities} items left</span>
         <div>
           <span className="card__footer__span selected">All</span>
           <span className="card__footer__span">Active</span>
