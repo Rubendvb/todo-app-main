@@ -1,0 +1,26 @@
+.header {
+  margin-bottom: 46px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1rem;
+  }
+
+  button {
+    background-color: transparent;
+    border: 0;
+    background-image: var(--img-toggle);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    cursor: pointer;
+  }
+}

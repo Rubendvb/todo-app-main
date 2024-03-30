@@ -12,7 +12,7 @@
   --padding: 20px 24px;
 }
 
-:root[data-theme='theme1'] {
+:root[data-theme='light'] {
   /* Light Theme */
   --body-bg: hsl(0, 0%, 98%);
   --card-bg: hsl(0, 0%, 100%);
@@ -21,9 +21,10 @@
   --color-text-disabled: hsl(236, 9%, 61%);
   --color-text-line-through: hsl(233, 11%, 84%);
   --border-color: hsl(235, 32%, 92%);
+  --img-toggle: url('../assets/images/icon-sun.svg');
 }
 
-:root[data-theme='theme2'] {
+:root[data-theme='dark'] {
   /* Dark Theme */
   --body-bg: hsl(235, 21%, 11%);
   --card-bg: hsl(235, 24%, 19%);
@@ -32,6 +33,7 @@
   --color-text-disabled: hsl(234, 11%, 52%);
   --color-text-line-through: hsl(233, 14%, 35%);
   --border-color: hsl(237, 14%, 26%);
+  --img-toggle: url('../assets/images/icon-moon.svg');
 }
 
 * {

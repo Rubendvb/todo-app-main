@@ -1,4 +1,5 @@
 import Card from './components/Card/Card'
+import Header from './components/Header/Header'
 import Input from './components/Input/Input'
 
 import './styles/App.css'
@@ -6,9 +7,7 @@ import './styles/App.css'
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>Todo</h1>
-      </header>
+      <Header />
 
       <Input />
 

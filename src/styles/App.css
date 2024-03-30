@@ -9,18 +9,6 @@ body {
   padding-top: 80px;
 }
 
-.header {
-  margin-bottom: 46px;
-
-  h1 {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 1rem;
-  }
-}
-
 .footer {
   display: flex;
   flex-direction: column;
