@@ -79,6 +79,10 @@
     span {
       font-weight: 700;
       cursor: pointer;
+
+      &:is(:not(.selected)):hover {
+        color: var(--color-text-hover);
+      }
     }
   }
 }
@@ -90,6 +94,10 @@
 
   &.clear {
     cursor: pointer;
+
+    &:hover {
+      color: var(--color-text-hover);
+    }
   }
 }
 
