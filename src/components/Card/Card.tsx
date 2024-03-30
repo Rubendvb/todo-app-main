@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import classNames from 'classnames'
 
 import { ITask } from '../../@types/tasks'
 
+import Cross from '../../assets/images/icon-cross.svg'
+
 import './Card.css'
-import { useState } from 'react'
 
 const optionsFilters = [
   {
@@ -23,28 +25,36 @@ const optionsFilters = [
 export type Filter = '' | 'all' | 'active' | 'completed'
 
 interface CardProps {
-  itemQuantities: number
+  setTasks: React.Dispatch<React.SetStateAction<ITask[]>>
   tasks: ITask[]
   setFilter: React.Dispatch<React.SetStateAction<Filter>>
   filter: Filter
+  itemQuantities: number
 }
 
-export default function Card({ itemQuantities, tasks }: CardProps) {
+export default function Card({ itemQuantities, tasks, setTasks }: CardProps) {
   const [selected, setSelected] = useState('all')
+
+  const deletedTask = (id: string) => {
+    const newTasks = tasks.filter((task) => task.id !== id)
+
+    setTasks(newTasks)
+  }
+
   return (
     <main className="card">
       <ul>
         {tasks &&
-          tasks.map((task, index) => (
-            <li key={index}>
+          tasks.map((task) => (
+            <li key={task.id}>
               <label>
-                <input
-                  type="checkbox"
-                  name="checkbox"
-                  id={`${task.createdAd}`}
-                />
+                <input type="checkbox" name="checkbox" id={`${task.id}`} />
                 <span>{task.description}</span>
               </label>
+
+              <button onClick={() => deletedTask(task.id)}>
+                <img src={Cross} alt="icon-cross" />
+              </button>
             </li>
           ))}
       </ul>

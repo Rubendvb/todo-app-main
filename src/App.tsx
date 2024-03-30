@@ -24,10 +24,11 @@ function App() {
       <Input setTasks={setTasks} />
 
       <Card
-        itemQuantities={itemQuantities}
+        setTasks={setTasks}
         tasks={tasks}
         setFilter={setFilter}
         filter={filter}
+        itemQuantities={itemQuantities}
       />
 
       <footer className="footer">

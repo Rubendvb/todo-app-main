@@ -13,6 +13,9 @@
       user-select: none;
       position: relative;
       color: var(--color-text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       label {
         display: flex;
@@ -62,6 +65,13 @@
           align-items: flex-end;
           cursor: pointer;
         }
+      }
+
+      button {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        outline: none;
       }
     }
   }

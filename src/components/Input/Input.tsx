@@ -1,11 +1,13 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
-import './Input.css'
 import { InputProps } from '../../@types/input'
+import { v4 as uuidv4 } from 'uuid'
+
+import './Input.css'
 
 export default function Input({ setTasks }: InputProps) {
   const initialTask = {
+    id: uuidv4(),
     status: 'created',
-    createdAd: new Date().toISOString(),
   }
 
   const [inputValue, setInputValue] = useState('')
