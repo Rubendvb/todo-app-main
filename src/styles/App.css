@@ -1,0 +1,34 @@
+body {
+  background-image: url('../assets/images/bg-desktop-light.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--body-bg);
+
+  max-width: 540px;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+.header {
+  margin-bottom: 46px;
+
+  h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1rem;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  span {
+    font-size: 0.75rem;
+    color: var(--color-text-disabled);
+  }
+}
