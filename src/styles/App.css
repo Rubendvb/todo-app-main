@@ -7,6 +7,11 @@ body {
   max-width: 540px;
   margin: 0 auto;
   padding-top: 80px;
+
+  @media (max-width: 600px) {
+    padding: 80px 24px;
+    background-image: var(--img-bg-mobile);
+  }
 }
 
 .footer {

@@ -23,6 +23,7 @@
   --border-color: hsl(235, 32%, 92%);
   --img-toggle: url('../assets/images/icon-sun.svg');
   --img-bg: url('public/bg-desktop-light.jpg');
+  --img-bg-mobile: url('public/bg-mobile-light.jpg');
 }
 
 :root[data-theme='dark'] {
@@ -36,6 +37,7 @@
   --border-color: hsl(237, 14%, 26%);
   --img-toggle: url('../assets/images/icon-moon.svg');
   --img-bg: url('../../public/bg-desktop-dark.jpg');
+  --img-bg-mobile: url('public/bg-mobile-dark.jpg');
 }
 
 * {

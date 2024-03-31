@@ -67,6 +67,7 @@ export default function Card({
     const newTasks = tasks.filter((task) => task.status !== 'completed')
 
     setTasks(newTasks)
+    setItemQuantities(newTasks.length)
   }
 
   useEffect(() => {

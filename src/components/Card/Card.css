@@ -76,6 +76,15 @@
         border: 0;
         cursor: pointer;
         outline: none;
+        display: none;
+
+        @media (max-width: 768px) {
+          display: block;
+        }
+      }
+
+      &:hover button {
+        display: block;
       }
     }
   }
