@@ -29,6 +29,7 @@ function App() {
         setFilter={setFilter}
         filter={filter}
         itemQuantities={itemQuantities}
+        setItemQuantities={setItemQuantities}
       />
 
       <footer className="footer">

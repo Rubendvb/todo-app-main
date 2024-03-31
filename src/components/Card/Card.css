@@ -55,9 +55,13 @@
             }
           }
 
-          /* &:disabled {
+          &:disabled {
             cursor: not-allowed;
-          } */
+
+            & + span {
+              cursor: not-allowed;
+            }
+          }
         }
 
         span {
