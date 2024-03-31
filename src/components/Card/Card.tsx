@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import classNames from 'classnames'
 
 import { ITask } from '../../@types/tasks'
@@ -86,12 +86,32 @@ export default function Card({
     }
   }, [selected, tasks, setTasksFiltered, setItemQuantities])
 
+  const dragTask = useRef<number>(0)
+  const draggedOverTask = useRef<number>(0)
+
+  function handleSort() {
+    const tasksClone = [...tasks]
+
+    const temp = tasksClone[dragTask.current]
+
+    tasksClone[dragTask.current] = tasksClone[draggedOverTask.current]
+    tasksClone[draggedOverTask.current] = temp
+    setTasks(tasksClone)
+  }
+
   return (
     <main className="card">
       <ul>
         {tasks &&
-          tasksFiltered.map((task) => (
-            <li key={task.id}>
+          tasksFiltered.map((task, index) => (
+            <li
+              key={task.id}
+              draggable
+              onDragStart={() => (dragTask.current = index)}
+              onDragEnter={() => (draggedOverTask.current = index)}
+              onDragEnd={handleSort}
+              onDragOver={(e) => e.preventDefault()}
+            >
               <label onChange={() => selectTaskStatus(task.id)}>
                 <input
                   type="checkbox"
