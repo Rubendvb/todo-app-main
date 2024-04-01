@@ -20,6 +20,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      overflow: hidden;
 
       @media (max-width: 600px) {
         font-size: 0.75rem;
@@ -28,6 +29,7 @@
 
       label {
         display: flex;
+        word-break: break-all;
 
         & > input[type='checkbox'] {
           width: 24px;
