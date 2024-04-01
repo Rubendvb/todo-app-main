@@ -8,9 +8,25 @@ body {
   margin: 0 auto;
   padding-top: 80px;
 
-  @media (max-width: 600px) {
-    padding: 80px 24px;
+  @media (max-width: 768px) {
+    padding: 48px 24px;
     background-image: var(--img-bg-mobile);
+  }
+}
+
+.container__filters {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 10px 36px -16px #000;
+  margin-bottom: 48px;
+  display: none;
+
+  @media (max-width: 425px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
 }
 

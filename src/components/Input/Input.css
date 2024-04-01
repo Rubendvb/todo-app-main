@@ -2,6 +2,10 @@
   position: relative;
   margin-bottom: 24px;
 
+  @media (max-width: 600px) {
+    margin-bottom: 1rem;
+  }
+
   span {
     position: absolute;
     width: 24px;
@@ -12,6 +16,12 @@
     top: 50%;
     left: 24px;
     transform: translateY(-50%);
+
+    @media (max-width: 600px) {
+      width: 20px;
+      height: 20px;
+      left: 20px;
+    }
   }
 }
 
@@ -27,6 +37,11 @@
   appearance: none;
   background-color: var(--card-bg);
   font-size: 1rem;
+
+  @media (max-width: 600px) {
+    padding: 14px 20px 14px 52px;
+    font-size: 0.75rem;
+  }
 
   &::placeholder {
     color: var(--color-text-disabled);

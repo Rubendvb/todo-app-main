@@ -1,26 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
-import classNames from 'classnames'
-
 import { ITask } from '../../@types/tasks'
+
+import Filters from '../Filters/Filters'
 
 import Cross from '../../assets/images/icon-cross.svg'
 
 import './Card.css'
-
-const optionsFilters = [
-  {
-    name: 'All',
-    value: 'all',
-  },
-  {
-    name: 'Active',
-    value: 'active',
-  },
-  {
-    name: 'Completed',
-    value: 'completed',
-  },
-]
 
 export type Filter = '' | 'all' | 'active' | 'completed'
 
@@ -31,6 +16,8 @@ interface CardProps {
   filter: Filter
   itemQuantities: number
   setItemQuantities: React.Dispatch<React.SetStateAction<number>>
+  selected: string
+  setSelected: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function Card({
@@ -38,8 +25,9 @@ export default function Card({
   tasks,
   setTasks,
   setItemQuantities,
+  selected,
+  setSelected,
 }: CardProps) {
-  const [selected, setSelected] = useState('all')
   const [tasksFiltered, setTasksFiltered] = useState<ITask[]>([])
 
   const selectTaskStatus = (id: string) => {
@@ -85,19 +73,28 @@ export default function Card({
       setTasksFiltered(tasks)
       setItemQuantities(tasks.length)
     }
-  }, [selected, tasks, setTasksFiltered, setItemQuantities])
+  }, [
+    selected,
+    tasks,
+    setTasksFiltered,
+    setItemQuantities,
+    itemQuantities,
+    selectTaskStatus,
+  ])
 
   const dragTask = useRef<number>(0)
   const draggedOverTask = useRef<number>(0)
 
   function handleSort() {
-    const tasksClone = [...tasks]
+    if (selected === 'all') {
+      const tasksClone = [...tasks]
 
-    const temp = tasksClone[dragTask.current]
+      const temp = tasksClone[dragTask.current]
 
-    tasksClone[dragTask.current] = tasksClone[draggedOverTask.current]
-    tasksClone[draggedOverTask.current] = temp
-    setTasks(tasksClone)
+      tasksClone[dragTask.current] = tasksClone[draggedOverTask.current]
+      tasksClone[draggedOverTask.current] = temp
+      setTasks(tasksClone)
+    }
   }
 
   return (
@@ -107,7 +104,7 @@ export default function Card({
           tasksFiltered.map((task, index) => (
             <li
               key={task.id}
-              draggable
+              draggable={selected === 'all' ? true : false}
               onDragStart={() => (dragTask.current = index)}
               onDragEnter={() => (draggedOverTask.current = index)}
               onDragEnd={handleSort}
@@ -120,7 +117,6 @@ export default function Card({
                   id={`${task.id}`}
                   disabled={task.status === 'completed'}
                   checked={task.status === 'completed'}
-                  onChange={() => selectTaskStatus(task.id)}
                 />
                 <span>{task.description}</span>
               </label>
@@ -134,22 +130,11 @@ export default function Card({
 
       <div className="card__footer">
         <span className="card__footer__span">{itemQuantities} items left</span>
-        <div>
-          {optionsFilters.map((option) => (
-            <span
-              key={option.value}
-              className={classNames({
-                card__footer__span: true,
-                selected: selected === option.value,
-              })}
-              onClick={() => {
-                setSelected(option.value)
-              }}
-            >
-              {option.name}
-            </span>
-          ))}
+
+        <div className="card__footer__filters">
+          <Filters selected={selected} setSelected={setSelected} />
         </div>
+
         <span
           className="card__footer__span clear"
           onClick={() => clearCompleted()}

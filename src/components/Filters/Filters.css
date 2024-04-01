@@ -1,0 +1,15 @@
+.filter__span {
+  font-size: 0.75rem;
+  color: var(--color-text-disabled);
+  user-select: none;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:is(:not(.selected)):hover {
+    color: var(--color-text-hover);
+  }
+}
+
+.selected {
+  color: var(--Bright-Blue);
+}
