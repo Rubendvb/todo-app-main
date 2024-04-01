@@ -22,7 +22,7 @@
   --color-text-line-through: hsl(233, 11%, 84%);
   --border-color: hsl(235, 32%, 92%);
   --img-toggle: url('../assets/images/icon-moon.svg');
-  --img-bg: url('public/bg-desktop-light.jpg');
+  --img-bg: url('../../public/bg-desktop-light.jpg');
   --img-bg-mobile: url('public/bg-mobile-light.jpg');
 }
 
