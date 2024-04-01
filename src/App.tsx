@@ -17,7 +17,16 @@ function App() {
   const [selected, setSelected] = useState('all')
 
   useEffect(() => {
-    setItemQuantities(tasks.length)
+    const savedTasks = localStorage.getItem('tasks')
+    const parsedTasks = savedTasks ? JSON.parse(savedTasks) : []
+
+    if (JSON.stringify(parsedTasks) !== JSON.stringify(tasks)) {
+      setTasks(parsedTasks)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
 
   return (

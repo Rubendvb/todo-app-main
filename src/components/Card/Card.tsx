@@ -73,14 +73,7 @@ export default function Card({
       setTasksFiltered(tasks)
       setItemQuantities(tasks.length)
     }
-  }, [
-    selected,
-    tasks,
-    setTasksFiltered,
-    setItemQuantities,
-    itemQuantities,
-    selectTaskStatus,
-  ])
+  }, [selected, tasks, setTasksFiltered, itemQuantities, setItemQuantities])
 
   const dragTask = useRef<number>(0)
   const draggedOverTask = useRef<number>(0)
@@ -117,6 +110,7 @@ export default function Card({
                   id={`${task.id}`}
                   disabled={task.status === 'completed'}
                   checked={task.status === 'completed'}
+                  onChange={() => selectTaskStatus(task.id)}
                 />
                 <span>{task.description}</span>
               </label>
