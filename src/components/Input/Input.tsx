@@ -30,7 +30,11 @@ export default function Input({ setTasks }: InputProps) {
   }
 
   return (
-    <form role="form" onSubmit={handleSubmit} className="input__container">
+    <form
+      aria-label="form"
+      onSubmit={handleSubmit}
+      className="input__container"
+    >
       <span></span>
       <input
         className="input"
