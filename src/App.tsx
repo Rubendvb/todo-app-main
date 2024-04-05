@@ -46,9 +46,9 @@ function App() {
         setSelected={setSelected}
       />
 
-      <section className="container__filters">
+      <div className="container__filters">
         <Filters selected={selected} setSelected={setSelected} />
-      </section>
+      </div>
 
       <footer className="footer">
         <span>Drag and drop to reorder list</span>
