@@ -30,7 +30,7 @@ export default function Input({ setTasks }: InputProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="input__container">
+    <form role="form" onSubmit={handleSubmit} className="input__container">
       <span></span>
       <input
         className="input"
